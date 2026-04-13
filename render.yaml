@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: medeus-proxy
+    runtime: node
+    buildCommand: npm install
+    startCommand: node index.js
