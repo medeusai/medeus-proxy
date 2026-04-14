@@ -4,8 +4,10 @@ const https = require('https');
 const PORT = process.env.PORT || 3000;
 
 const ROUTES = [
-  { prefix: '/groq',      host: 'api.groq.com',       rewrite: p => '/openai' + p },
-  { prefix: '/anthropic', host: 'api.anthropic.com',   rewrite: p => p },
+  { prefix: '/groq',      host: 'api.groq.com',      rewrite: p => '/openai' + p },
+  { prefix: '/anthropic', host: 'api.anthropic.com',  rewrite: p => p },
+  { prefix: '/mistral',   host: 'api.mistral.ai',     rewrite: p => p },
+  { prefix: '/cohere',    host: 'api.cohere.com',     rewrite: p => p },
 ];
 const DEFAULT = { host: 'api.mistral.ai', rewrite: p => p };
 
