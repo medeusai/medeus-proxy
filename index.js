@@ -8,13 +8,15 @@ const ROUTES = [
   { prefix: '/anthropic', host: 'api.anthropic.com',  rewrite: p => p },
   { prefix: '/mistral',   host: 'api.mistral.ai',     rewrite: p => p },
   { prefix: '/cohere',    host: 'api.cohere.com',     rewrite: p => p },
+  { prefix: '/openrouter', host: 'openrouter.ai',     rewrite: p => '/api/v1' + p },
+  { prefix: '/primalabs', host: 'api.primalabs.ai',   rewrite: p => '/v1' + p },
 ];
 const DEFAULT = { host: 'api.mistral.ai', rewrite: p => p };
 
 http.createServer((req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization,x-api-key,anthropic-version,anthropic-dangerous-direct-browser-access');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization,x-api-key,anthropic-version,anthropic-dangerous-direct-browser-access,HTTP-Referer,X-Title');
   if (req.method === 'OPTIONS') { res.writeHead(204); res.end(); return; }
 
   let route = DEFAULT;
