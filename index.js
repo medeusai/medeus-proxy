@@ -10,6 +10,9 @@ const ROUTES = [
   { prefix: '/cohere',    host: 'api.cohere.com',     rewrite: p => p },
   { prefix: '/openrouter', host: 'openrouter.ai',     rewrite: p => '/api/v1' + p },
   { prefix: '/primalabs', host: 'api.primalabs.ai',   rewrite: p => '/v1' + p },
+  // Busca na web do Solon (chaves seguem no navegador; o proxy só repassa)
+  { prefix: '/tavily',    host: 'api.tavily.com',     rewrite: p => p },                 // POST /tavily/search -> /search
+  { prefix: '/deepseek',  host: 'api.deepseek.com',   rewrite: p => p },                 // POST /deepseek/v1/tools/search
 ];
 const DEFAULT = { host: 'api.mistral.ai', rewrite: p => p };
 
